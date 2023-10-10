@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DylanDeSouzaSimpleExerciseTracker.MainPage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource darkTheme}, Light={StaticResource lightTheme}}">
+    <StackLayout VerticalOptions="Center">
+        <Label Text="Enter duration exercise (mins)"/>
+        <Entry x:Name="durationEntry"/>
+        <Button Text="Log" Clicked="ButtonClicked" x:Name="logButton"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Average time exercised"/>
+            <Label x:Name="averageTimeExercised"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Mandatory exercise time"/>
+            <Label x:Name="mandatoryExerciseTime"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Time exercised"/>
+            <Label x:Name="timeExercised"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Expected exercise time"/>
+            <Label x:Name="expectedExercisetime"/>
+        </StackLayout>
+        <Button Text="Settings" Clicked="ButtonClicked" x:Name="settingsButton"/>
+    </StackLayout>
+
+</ContentPage>

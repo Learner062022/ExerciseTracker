@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DylanDeSouzaSimpleExerciseTracker.Settings"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource darkTheme}, Light={StaticResource lightTheme}}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Picker Title="Colour" x:Name="colourPicker" SelectedIndexChanged="SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Blue</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Picker Title="Theme" x:Name="themePicker" SelectedIndexChanged="SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Dark</x:String>
+                        <x:String>Light</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <RadioButton Content="Text" x:Name="textRadioButton" CheckedChanged="RadioButtonCheckedChanged"/>
+            <Picker Title="Duration" x:Name="durationPicker" SelectedIndexChanged="SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                        <x:String>12</x:String>
+                        <x:String>13</x:String>
+                        <x:String>14</x:String>
+                        <x:String>15</x:String>
+                        <x:String>16</x:String>
+                        <x:String>17</x:String>
+                        <x:String>18</x:String>
+                        <x:String>19</x:String>
+                        <x:String>20</x:String>
+                        <x:String>21</x:String>
+                        <x:String>22</x:String>
+                        <x:String>23</x:String>
+                        <x:String>24</x:String>
+                        <x:String>25</x:String>
+                        <x:String>26</x:String>
+                        <x:String>27</x:String>
+                        <x:String>28</x:String>
+                        <x:String>29</x:String>
+                        <x:String>30</x:String>
+                        <x:String>31</x:String>
+                        <x:String>32</x:String>
+                        <x:String>33</x:String>
+                        <x:String>34</x:String>
+                        <x:String>35</x:String>
+                        <x:String>36</x:String>
+                        <x:String>37</x:String>
+                        <x:String>38</x:String>
+                        <x:String>39</x:String>
+                        <x:String>40</x:String>
+                        <x:String>41</x:String>
+                        <x:String>42</x:String>
+                        <x:String>43</x:String>
+                        <x:String>44</x:String>
+                        <x:String>45</x:String>
+                        <x:String>46</x:String>
+                        <x:String>47</x:String>
+                        <x:String>48</x:String>
+                        <x:String>49</x:String>
+                        <x:String>50</x:String>
+                        <x:String>51</x:String>
+                        <x:String>52</x:String>
+                        <x:String>53</x:String>
+                        <x:String>54</x:String>
+                        <x:String>55</x:String>
+                        <x:String>56</x:String>
+                        <x:String>57</x:String>
+                        <x:String>58</x:String>
+                        <x:String>59</x:String>
+                        <x:String>60</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button Text="Reset" x:Name="resetButton" Clicked="ButtonClicked"/>
+            <Button Text="Back" x:Name="backButton" Clicked="ButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

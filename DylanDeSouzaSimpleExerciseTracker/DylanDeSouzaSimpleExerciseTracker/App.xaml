@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DylanDeSouzaSimpleExerciseTracker.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="darkTheme">Black</Color>
+            <Color x:Key="lightTheme">white</Color>
+            <Style TargetType="Label">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
