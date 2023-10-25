@@ -3,27 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DylanDeSouzaSimpleExerciseTracker.MainPage"
              BackgroundColor="{AppThemeBinding Dark={StaticResource darkTheme}, Light={StaticResource lightTheme}}">
-    <StackLayout VerticalOptions="Center">
-        <Label Text="Enter duration exercise (mins)"/>
-        <Entry x:Name="durationEntry"/>
-        <Button Text="Log" Clicked="ButtonClicked" x:Name="logButton"/>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Average time exercised"/>
-            <Label x:Name="averageTimeExercised"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Mandatory exercise time"/>
-            <Label x:Name="mandatoryExerciseTime"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Time exercised"/>
-            <Label x:Name="timeExercised"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Expected exercise time"/>
-            <Label x:Name="expectedExercisetime"/>
-        </StackLayout>
-        <Button Text="Settings" Clicked="ButtonClicked" x:Name="settingsButton"/>
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackLayout>
+                <Label Text="Enter duration exercise (mins)"/>
+                <Entry x:Name="durationEntry"/>
+                <Button Text="Log" Clicked="ButtonClicked" x:Name="logButton"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Average time exercised"/>
+                    <Label x:Name="averageTimeExercised"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Mandatory exercise time"/>
+                    <Label x:Name="mandatoryExerciseTime"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Time exercised"/>
+                    <Label x:Name="timeExercised"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Expected exercise time"/>
+                    <Label x:Name="expectedExercisetime"/>
+                </StackLayout>
+                <Button Text="Settings" Clicked="ButtonClicked" x:Name="settingsButton"/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid Grid.Column="0">
+                        <Button Text="7" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Text="8" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Text="9" Clicked="ButtonClicked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid Grid.Column="0">
+                        <Button Text="4" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Text="5" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Text="6" Clicked="ButtonClicked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid Grid.Column="0">
+                        <Button Text="1" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Text="2" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Text="3" Clicked="ButtonClicked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid Grid.Column="0">
+                        <Button Text="0" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Text="C" Clicked="ButtonClicked"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Text="Delete" Clicked="ButtonClicked"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 
 </ContentPage>

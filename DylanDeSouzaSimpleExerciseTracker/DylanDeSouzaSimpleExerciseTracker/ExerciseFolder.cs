@@ -2,18 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
-    public static class ExerciseFolder
+    static class ExerciseFolder
     {
-        public static string name = "ExFolder";
-        public static IFolder folder;
-
-        public static async void CreateOpenFolder()
+        public static async Task<IFolder> CreateOpenFolder()
         {
+            string name = "ExFolder";
+            IFolder folder;
             folder = FileSystem.Current.LocalStorage;
-            folder = await folder.CreateFolderAsync(name, CreationCollisionOption.OpenIfExists);
+            return await folder.CreateFolderAsync(name, CreationCollisionOption.OpenIfExists);
         }
     }
 }

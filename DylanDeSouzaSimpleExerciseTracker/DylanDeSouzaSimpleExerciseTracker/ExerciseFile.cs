@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
     public static class ExerciseFile
     {
-        public static string name = "ExFile.txt";
-        public static IFile file;
+        static IFile file;
+        static string fileName = "ExFile.txt";
 
         public static async void CreateOpenFile()
         {
-            ExerciseFolder.CreateOpenFolder();
+            IFolder folder = await ExerciseFolder.CreateOpenFolder();
             try
             {
-                file = await ExerciseFolder.folder.GetFileAsync(name);
+                file = await folder.GetFileAsync(fileName);
                 Debug.WriteLine(file.Path);
             }
             catch (FileNotFoundException)
             {
-                file = await ExerciseFolder.folder.CreateFileAsync(name, CreationCollisionOption.OpenIfExists);
-                Debug.WriteLine(file.Path);
+                file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
             }
         }
     }

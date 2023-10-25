@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,72 +8,64 @@ namespace DylanDeSouzaSimpleExerciseTracker
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Settings : ContentPage
     {
+        Dictionary<string, Picker> pickerDictionary;
+
         public Settings()
         {
             InitializeComponent();
-            Application.Current.Properties["page"] = "settings";
+            InitializePickers();
         }
 
-        public void DisplayAndApplySettings()
+        void InitializePickers()
         {
-            if (Application.Current.Properties.ContainsKey("colour"))
+            pickerDictionary = new Dictionary<string, Picker>
             {
-                colourPicker.SelectedItem = Application.Current.Properties["colour"];
-            }
-            if (Application.Current.Properties.ContainsKey("duration"))
+                { "durationPicker", durationPicker },
+                { "themePicker", themePicker },
+                { "colourPicker", colourPicker }
+            };
+
+            foreach (var picker in pickerDictionary)
             {
-                durationPicker.SelectedItem = Application.Current.Properties["duration"];
-            }
-            if (Application.Current.Properties.ContainsKey("theme"))
-            {
-                themePicker.SelectedItem = Application.Current.Properties["theme"];
-                if (Application.Current.Properties["theme"] == "Dark")
-                {
-                    App.Current.UserAppTheme = OSAppTheme.Dark;
-                }
-                if (Application.Current.Properties["theme"] == "Light")
-                {
-                    App.Current.UserAppTheme = OSAppTheme.Light;
-                }
-            }
-            if (Application.Current.Properties.ContainsKey("textChecked") && Application.Current.Properties.ContainsKey("colour"))
-            {
-                // Apply colour
+                picker.Value.SelectedItem = GetOrCreateApplicationProperty(picker.Key, null);
+                picker.Value.SelectedIndexChanged += SelectedIndexChanged;
             }
         }
 
-        private async void ButtonClicked(object sender, EventArgs e)
+        object GetOrCreateApplicationProperty(string key, object defaultValue)
+        {
+            if (!Application.Current.Properties.TryGetValue(key, out var value))
+            {
+                Application.Current.Properties.Add(key, defaultValue);
+                return defaultValue;
+            }
+            return value;
+        }
+
+        void SetOrUpdateApplicationProperty(string key, object value)
+        {
+            if (Application.Current.Properties.TryGetValue(key, out _))
+            {
+                Application.Current.Properties[key] = value;
+            }
+        }
+
+        async void ButtonClicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             if (button == backButton)
             {
+                Application.Current.Properties["page"] = "main";
                 await Navigation.PopModalAsync();
             }
         }
 
-        private void RadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            RadioButton radioButton = (RadioButton)sender;
-            if (radioButton == textRadioButton)
-            {
-                Application.Current.Properties["textChecked"] = e.Value;
-            }
-        }
-
-        private void SelectedIndexChanged(object sender, EventArgs e)
+        void SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
-            if (picker == colourPicker)
+            if (pickerDictionary.TryGetValue(picker.StyleId, out Picker selectedPicker))
             {
-                Application.Current.Properties["colour"] = colourPicker.SelectedItem;
-            }
-            if (picker == durationPicker)
-            {
-                Application.Current.Properties["duration"] = picker.SelectedItem;
-            }
-            if (picker == themePicker)
-            {
-                Application.Current.Properties["theme"] = picker.SelectedItem;
+                SetOrUpdateApplicationProperty(selectedPicker.StyleId, picker.SelectedItem);
             }
         }
     }

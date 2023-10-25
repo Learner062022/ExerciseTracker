@@ -20,7 +20,6 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <RadioButton Content="Text" x:Name="textRadioButton" CheckedChanged="RadioButtonCheckedChanged"/>
             <Picker Title="Duration" x:Name="durationPicker" SelectedIndexChanged="SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
