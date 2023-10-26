@@ -12,7 +12,7 @@
             <StackLayout>
                 <Label Text="Enter duration exercise (mins)"/>
                 <Entry x:Name="durationEntry"/>
-                <Button Text="Log" Clicked="ButtonClicked" x:Name="logButton"/>
+                <Button Text="Log" Clicked="ButtonClicked"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Average time exercised"/>
                     <Label x:Name="averageTimeExercised"/>
@@ -29,7 +29,7 @@
                     <Label Text="Expected exercise time"/>
                     <Label x:Name="expectedExercisetime"/>
                 </StackLayout>
-                <Button Text="Settings" Clicked="ButtonClicked" x:Name="settingsButton"/>
+                <Button Text="Settings" Clicked="ButtonClicked"/>
             </StackLayout>
         </Grid>
         <Grid Grid.Row="1">
