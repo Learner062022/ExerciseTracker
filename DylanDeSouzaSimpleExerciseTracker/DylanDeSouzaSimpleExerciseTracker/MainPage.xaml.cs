@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace DylanDeSouzaSimpleExerciseTracker
@@ -9,7 +8,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
     {
         Settings settings = new Settings();
         const int AVERAGE = 30;
-        Dictionary<string, double> datesExerciseTime = new Dictionary<string, double>();
+        
 
         public MainPage()
         {
@@ -26,62 +25,42 @@ namespace DylanDeSouzaSimpleExerciseTracker
             }
         }
 
-        string GetCurrentDate(string currentDateTime)
+        string GetCurrentDate()
         {
-            return currentDateTime.Substring(0, currentDateTime.IndexOf(" "));
+            string dateTime = DateTime.Now.ToString();
+            return dateTime.Substring(0, dateTime.IndexOf(" "));
         }
 
-        double GetTimeExercisedViaCurrentDate(string currentDateTime)
+        void SetOrUpdateHoursExercisedAndExpected()
         {
-            return datesExerciseTime[GetCurrentDate(currentDateTime)];
+            Dictionary<string, int> hoursExercised;
+            Dictionary<string, int> hoursExpected;
+            string date = GetCurrentDate();
+            // if in file, update record, else extend records
         }
 
-        void SetOrUpdateDurationExerciseCurrentDate()
+        double CalculateAverageTimeExercisedDaily()
         {
-            string date = GetCurrentDate(DateTime.Now.ToString());
-            double exerciseTime = GetTimeExercisedViaCurrentDate(date);
-            if (datesExerciseTime.ContainsKey(date))
+            // Get file's contents and divide its sum keys' values by the amount of keys;
+        }
+
+        void SetColourAverageTimeExercisedDaily()
+        {
+            double average = CalculateAverageTimeExercisedDaily();
+            averageTimeExercisedDaily.Text = average.ToString();
+            if (average < AVERAGE == true)
             {
-                datesExerciseTime[date] += double.Parse(durationEntry.Text);
+                averageTimeExercisedDaily.TextColor = Color.Red;
             }
             else
             {
-                datesExerciseTime.Add(date, exerciseTime);
-            }
-            durationEntry.Text = string.Empty;
-        }
-
-        double CalculateAverageTimeExercisedDaily(string totalExerciseTime)
-        {
-            return double.Parse(totalExerciseTime) / 365;
-        }
-
-        void SetColourAverageTimeExercisedDaily(string totalExerciseTime)
-        {
-            averageTimeExercised.Text = totalExerciseTime;
-            if (CalculateAverageTimeExercisedDaily(totalExerciseTime) < AVERAGE == true)
-            {
-                averageTimeExercised.TextColor = Color.Red;
-            }
-            else
-            {
-                averageTimeExercised.TextColor = Color.Green;
+                averageTimeExercisedDaily.TextColor = Color.Green;
             }
         }
 
         double ConvertTimeExercisedToHours(string totalExerciseTime)
         {
             return double.Parse(totalExerciseTime) / 60;
-        }
-
-        void CalculateDailyExerciseTimeReachAverage(string exerciseTime)
-        {
-            
-        }
-
-        void DisplayHouresDoneAndShouldHaveDone(string totalExerciseTime)
-        {
-            timeExercised.Text = ConvertTimeExercisedToHours(totalExerciseTime).ToString();
         }
 
         bool ShouldNavigateToSettingsPage()
@@ -115,7 +94,9 @@ namespace DylanDeSouzaSimpleExerciseTracker
             }
             else
             {
-                SetOrUpdateDurationExerciseCurrentDate();
+                SetOrUpdateHoursExercisedAndExpected();
+                SetColourAverageTimeExercisedDaily();
+                durationEntry.Text = string.Empty;
             }
         }
 

@@ -14,20 +14,20 @@
                 <Entry x:Name="durationEntry"/>
                 <Button Text="Log" Clicked="ButtonClicked"/>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Average time exercised"/>
-                    <Label x:Name="averageTimeExercised"/>
+                    <Label Text="Average time exercised daily (mins)"/>
+                    <Label x:Name="averageTimeExercisedDaily"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Mandatory exercise time"/>
-                    <Label x:Name="mandatoryExerciseTime"/>
+                    <Label Text="Hourse expected"/>
+                    <Label x:Name="hoursExpected"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Time exercised"/>
-                    <Label x:Name="timeExercised"/>
+                    <Label Text="Hours exercised"/>
+                    <Label x:Name="hoursExercised"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Expected exercise time"/>
-                    <Label x:Name="expectedExercisetime"/>
+                    <Label Text="Annual daily exercise goal (mins)"/>
+                    <Label x:Name="AnnualDailyExerciseGoal"/>
                 </StackLayout>
                 <Button Text="Settings" Clicked="ButtonClicked"/>
             </StackLayout>
