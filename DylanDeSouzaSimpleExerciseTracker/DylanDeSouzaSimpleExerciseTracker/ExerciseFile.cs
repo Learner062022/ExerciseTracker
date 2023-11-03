@@ -1,6 +1,7 @@
 ﻿using PCLStorage;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -25,6 +26,16 @@ namespace DylanDeSouzaSimpleExerciseTracker
             {
                 file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
             }
+        }
+
+        public static async Task<string> ReadFile()
+        {
+            return await file.ReadAllTextAsync();
+        }
+
+        static async void WriteToFile(string date, string duration)
+        {
+            await file.WriteAllTextAsync(Logs.SerializeLogs(date, duration));
         }
     }
 }

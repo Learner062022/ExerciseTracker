@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace DylanDeSouzaSimpleExerciseTracker
@@ -25,24 +26,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
             }
         }
 
-        string GetCurrentDate()
-        {
-            string dateTime = DateTime.Now.ToString();
-            return dateTime.Substring(0, dateTime.IndexOf(" "));
-        }
-
-        void SetOrUpdateHoursExercisedAndExpected()
-        {
-            Dictionary<string, int> hoursExercised;
-            Dictionary<string, int> hoursExpected;
-            string date = GetCurrentDate();
-            // if in file, update record, else extend records
-        }
-
-        double CalculateAverageTimeExercisedDaily()
-        {
-            // Get file's contents and divide its sum keys' values by the amount of keys;
-        }
+        
 
         void SetColourAverageTimeExercisedDaily()
         {
@@ -111,6 +95,12 @@ namespace DylanDeSouzaSimpleExerciseTracker
             NavigateToSettingsPage();
         }
 
+        string GetDate()
+        {
+            string dateTime = DateTime.Now.ToString();
+            return dateTime.Substring(0, dateTime.IndexOf(" "));
+        }
+
         async void ButtonClicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -119,6 +109,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
             switch (buttonText)
             {
                 case "Log":
+                    
                     HandleLogButton();
                     break;
                 case "C":
