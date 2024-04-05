@@ -22,13 +22,5 @@ namespace DylanDeSouzaSimpleExerciseTracker
                 await navigation.PopModalAsync();
             }
         }
-
-        public async void NavigateToSettings(Page page, INavigation navigationContext)
-        {
-            if (Application.Current.Properties.ContainsKey("page") && Application.Current.Properties["page"] == "settings")
-            {
-                await navigationContext.PushModalAsync(page);
-            }
-        }
     }
 }

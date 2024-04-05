@@ -14,7 +14,6 @@ namespace DylanDeSouzaSimpleExerciseTracker
         {
             InitializeComponent();
             InitializeAsync();
-            navigationManager.NavigateToSettings(settings, Navigation);
         }
 
         private async void InitializeAsync() => await ExerciseFile.InitializeOrDeserializeLogsFromFile();
