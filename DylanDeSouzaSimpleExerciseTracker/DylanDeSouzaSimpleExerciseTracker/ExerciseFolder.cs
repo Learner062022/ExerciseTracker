@@ -8,12 +8,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
 {
     static class ExerciseFolder
     {
-        public static async Task<IFolder> CreateOpenFolder()
-        {
-            string name = "ExFolder";
-            IFolder folder;
-            folder = FileSystem.Current.LocalStorage;
-            return await folder.CreateFolderAsync(name, CreationCollisionOption.OpenIfExists);
-        }
+        const string name = "ExFolder";
+        public static async Task<IFolder> CreateFolder() => await FileSystem.Current.LocalStorage.CreateFolderAsync(name, CreationCollisionOption.OpenIfExists);
     }
 }

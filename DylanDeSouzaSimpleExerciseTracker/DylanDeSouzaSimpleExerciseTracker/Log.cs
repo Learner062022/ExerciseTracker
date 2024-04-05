@@ -1,20 +1,46 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
-    static class Log
+    public class Log
     {
-        public static Dictionary<string, string> CreateLog(string date, string duration)
+        public string Date { get; private set; }
+        public string Duration { get; set; }
+
+        public Log(string duration)
         {
-            var log = new Dictionary<string, string>()
+            Date = DateManager.GetDate();
+            Duration = duration;
+        }
+
+        [JsonConstructor]
+        public Log(string date, string duration) 
+        { 
+            Date = date;
+            Duration = duration;
+        }
+
+        public static async Task AddOrUpdateLog(string duration)
+        {
+            var existingLogIndex = Logs.logs.FindIndex(log => log.Date == DateManager.GetDate());
+            if (existingLogIndex >= 0)
             {
-                { date, duration }
-            };
-            return log;
+                Logs.logs[existingLogIndex].Duration = duration;
+
+            }
+            else
+            {
+                Logs.logs.Add(new Log(duration));
+            }
+            await ExerciseFile.WriteLogsToFile();
+            ButtonManager.duration = null;
         }
     }
-
 }

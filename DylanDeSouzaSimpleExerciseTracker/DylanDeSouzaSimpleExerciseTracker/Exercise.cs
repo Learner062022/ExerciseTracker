@@ -1,27 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
     public static class Exercise
     {
-        static double daily_average;
-        static double expected;
-        static double completed;
+        public static int AverageExpected = 30;
 
-        public void CalculateAverageTimeExercisedDaily()
+        private static int DaysInYear => DateTime.IsLeapYear(DateTime.Now.Year) ? 366 : 365;
+        private static int DaysRemaining => DaysInYear - DateTime.Now.DayOfYear;
+        private static int TotalExpectedMinutes => DaysInYear * AverageExpected;
+
+        public static int TotalMinutesExercised()
         {
-            if (daily_average != null)
-            {
-                
-            }
-            else
-            {
+            return Logs.logs.Sum(log => int.Parse(log.Duration));
+        }
 
-            }
-            ExerciseFile.ReadFile()
-            // Get file's contents and divide its sum keys' values by the amount of keys;
+        public static int MinutesExpected() => DateTime.Now.DayOfYear * AverageExpected;
+
+        public static double HoursExercised() => ConvertToHours(TotalMinutesExercised());
+
+        public static double ConvertToHours(int minutes) => minutes / 60.0; 
+
+        public static double HoursShouldHaveExercised() => ConvertToHours(MinutesExpected());
+
+        public static double MinutesNeededPerDayToReachGoal()
+        {
+            var minutesToGo = TotalExpectedMinutes - TotalMinutesExercised();
+            return DaysRemaining > 0 ? (double)minutesToGo / DaysRemaining : 0;
         }
     }
 }
