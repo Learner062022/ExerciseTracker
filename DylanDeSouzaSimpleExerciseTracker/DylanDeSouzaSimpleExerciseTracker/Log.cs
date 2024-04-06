@@ -12,7 +12,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
     public class Log
     {
         public string Date { get; private set; }
-        public string Duration { get; set; }
+        public string Duration { get; private set; }
 
         public Log(string duration)
         {
