@@ -4,16 +4,33 @@
              x:Class="DylanDeSouzaSimpleExerciseTracker.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="defaultTextColor">Black</Color>
+            <Color x:Key="buttonBackgroundColor">DarkGray</Color>
             <Color x:Key="darkTheme">Black</Color>
-            <Color x:Key="lightTheme">white</Color>
+            <Color x:Key="lightTheme">White</Color>
+            <Color x:Key="TitleColorLight">Black</Color>
+            <Color x:Key="TitleColorDark">White</Color>
+
+            <Color x:Key="TitleColor">Black</Color>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource defaultTextColor}"/>
+            </Style>
+
             <Style TargetType="Label">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource lightTheme}"/>
+                <Setter Property="TextColor" Value="{StaticResource defaultTextColor}"/>
             </Style>
+
             <Style TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource lightTheme}"/>
+                <Setter Property="TextColor" Value="{StaticResource defaultTextColor}"/>
             </Style>
+
             <Style TargetType="Picker">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource lightTheme}}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource lightTheme}"/>
+                <Setter Property="TitleColor" Value="{AppThemeBinding Dark={StaticResource TitleColorDark}, Light={StaticResource TitleColorLight}}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

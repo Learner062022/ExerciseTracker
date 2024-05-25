@@ -1,30 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
     public partial class MainPage : ContentPage
     {
-        readonly Settings settings = new Settings();
-        NavigationManager navigationManager = new NavigationManager();
-       
+        MainPageViewModel _viewModel = new MainPageViewModel();
+
         public MainPage()
         {
             InitializeComponent();
-            InitializeAsync();
+            BindingContext = _viewModel;
         }
 
-        private async void InitializeAsync() => await ExerciseFile.InitializeOrDeserializeLogsFromFile();
+        async Task InitializeAsync()
+        {
+            await ExerciseFile.InitializeOrDeserializeLogsFromFile();
+            _viewModel.UpdateStatistics();
+        }
 
-        private async void HandleButtons(Button button) => await ButtonManager.HandleButtonClick(button.Text, settings, durationEntry, Navigation);
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await InitializeAsync();
+            _viewModel.UpdateStatistics();
+        }
 
         void ButtonClicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            HandleButtons(button);
+            _viewModel.HandleButtonClick(button.Text, Navigation);
         }
     }
 }
-

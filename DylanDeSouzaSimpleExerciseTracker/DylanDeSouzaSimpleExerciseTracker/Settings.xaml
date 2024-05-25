@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DylanDeSouzaSimpleExerciseTracker.Settings"
              BackgroundColor="{AppThemeBinding Dark={StaticResource darkTheme}, Light={StaticResource lightTheme}}">
+
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Picker Title="Colour" x:Name="colourPicker" SelectedIndexChanged="SelectedIndexChanged">
+            <Picker Title="Colour" x:Name="colourPicker" StyleId="colourPicker" SelectedIndexChanged="SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
+                        <x:String>Default</x:String>
                         <x:String>Blue</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Picker Title="Theme" x:Name="themePicker" SelectedIndexChanged="SelectedIndexChanged">
+            <Picker Title="Theme" x:Name="themePicker" StyleId="themePicker" SelectedIndexChanged="SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Dark</x:String>
@@ -20,7 +22,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Picker Title="Duration" x:Name="durationPicker" SelectedIndexChanged="SelectedIndexChanged">
+            <Picker Title="Daily Average Minutes" x:Name="dailyAveragePicker" StyleId="dailyAveragePicker" SelectedIndexChanged="SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>5</x:String>
@@ -82,8 +84,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Button Text="Reset" x:Name="resetButton" Clicked="ButtonClicked"/>
-            <Button Text="Back" x:Name="backButton" Clicked="ButtonClicked"/>
+            <Button Text="Reset" x:Name="resetButton" Clicked="Buttonlicked"/>
+            <Button Text="Back" x:Name="backButton" Clicked="Buttonlicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

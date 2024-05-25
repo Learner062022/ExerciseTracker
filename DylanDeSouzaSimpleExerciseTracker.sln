@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DylanDeSouzaSimpleExerciseT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DylanDeSouzaSimpleExerciseTracker.iOS", "DylanDeSouzaSimpleExerciseTracker\DylanDeSouzaSimpleExerciseTracker.iOS\DylanDeSouzaSimpleExerciseTracker.iOS.csproj", "{62D4A775-6591-44EA-B8C0-4962C85C8A00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DylanDeSouzaSimpleExerciseTracker", "DylanDeSouzaSimpleExerciseTracker\DylanDeSouzaSimpleExerciseTracker\DylanDeSouzaSimpleExerciseTracker.csproj", "{F2236C81-EC51-4FD7-8BC2-7258E2BB213E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DylanDeSouzaSimpleExerciseTracker", "DylanDeSouzaSimpleExerciseTracker\DylanDeSouzaSimpleExerciseTracker\DylanDeSouzaSimpleExerciseTracker.csproj", "{F2236C81-EC51-4FD7-8BC2-7258E2BB213E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

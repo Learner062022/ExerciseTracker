@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,64 +9,57 @@ namespace DylanDeSouzaSimpleExerciseTracker
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Settings : ContentPage
     {
-        Dictionary<string, Picker> pickerDictionary;
-
+        public static List<Picker> controlsInSettings;
         public Settings()
         {
             InitializeComponent();
-            InitializePickers();
+            controlsInSettings = new List<Picker>() { themePicker, colourPicker, dailyAveragePicker };
+            SettingsManager.InitializeControls(dailyAveragePicker, colourPicker, themePicker);
+            ApplyTheme();
         }
 
-        void InitializePickers()
+        protected override void OnAppearing()
         {
-            pickerDictionary = new Dictionary<string, Picker>
-            {
-                { "durationPicker", durationPicker },
-                { "themePicker", themePicker },
-                { "colourPicker", colourPicker }
-            };
+            base.OnAppearing();
+            ApplyTheme();
+        }
 
-            foreach (var picker in pickerDictionary)
+        void ApplyTheme()
+        {
+            if (Application.Current.Properties.TryGetValue("themePicker", out object themeValue) && Enum.TryParse<AppTheme>(themeValue.ToString(), out var theme))
             {
-                picker.Value.SelectedItem = GetOrCreateApplicationProperty(picker.Key, null);
-                picker.Value.SelectedIndexChanged += SelectedIndexChanged;
+                ThemeManager.ApplyTheme(theme);
+                ApplyTitleColorBasedOnTheme();
+                BackgroundColor = (Color)Application.Current.Resources["BackgroundColor"];
             }
         }
 
-        object GetOrCreateApplicationProperty(string key, object defaultValue)
+        void ApplyTitleColorBasedOnTheme()
         {
-            if (!Application.Current.Properties.TryGetValue(key, out var value))
-            {
-                Application.Current.Properties.Add(key, defaultValue);
-                return defaultValue;
-            }
-            return value;
-        }
-
-        void SetOrUpdateApplicationProperty(string key, object value)
-        {
-            if (Application.Current.Properties.TryGetValue(key, out _))
-            {
-                Application.Current.Properties[key] = value;
-            }
-        }
-
-        async void ButtonClicked(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            if (button == backButton)
-            {
-                Application.Current.Properties["page"] = "main";
-                await Navigation.PopModalAsync();
-            }
+            var titleColor = (Color)Application.Current.Resources["TitleColor"];
+            colourPicker.TitleColor = titleColor;
+            themePicker.TitleColor = titleColor;
+            dailyAveragePicker.TitleColor = titleColor;
         }
 
         void SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
-            if (pickerDictionary.TryGetValue(picker.StyleId, out Picker selectedPicker))
+            PickerManager.HandlePickerAction(picker);
+            ApplyTheme();
+        }
+
+        void Buttonlicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            switch (button.Text)
             {
-                SetOrUpdateApplicationProperty(selectedPicker.StyleId, picker.SelectedItem);
+                case "Back":
+                    Navigation.PopModalAsync();
+                    break;
+                case "Reset":
+                    SettingsManager.ResetData();
+                    break;
             }
         }
     }

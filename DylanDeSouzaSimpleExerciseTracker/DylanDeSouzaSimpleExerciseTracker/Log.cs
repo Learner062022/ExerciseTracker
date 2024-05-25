@@ -1,46 +1,43 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Transactions;
+using Xamarin.Forms;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
     public class Log
     {
         public string Date { get; private set; }
-        public string Duration { get; private set; }
+        public string Duration { get; set; }
 
         public Log(string duration)
         {
-            Date = DateManager.GetDate();
+            Date = DateManager.GetCurrentDateString();
             Duration = duration;
         }
 
         [JsonConstructor]
-        public Log(string date, string duration) 
-        { 
+        public Log(string date, string duration)
+        {
             Date = date;
             Duration = duration;
         }
 
         public static async Task AddOrUpdateLog(string duration)
         {
-            var existingLogIndex = Logs.logs.FindIndex(log => log.Date == DateManager.GetDate());
-            if (existingLogIndex >= 0)
+            if (!string.IsNullOrEmpty(duration))
             {
-                Logs.logs[existingLogIndex].Duration = duration;
-
+                var existingLogIndex = Logs.ExerciseLogs.FindIndex(log => log.Date == DateManager.GetCurrentDateString());
+                if (existingLogIndex != -1)
+                {
+                    Logs.ExerciseLogs[existingLogIndex].Duration = duration;
+                }
+                else
+                {
+                    Logs.ExerciseLogs.Add(new Log(duration));
+                }
+                await ExerciseFile.WriteLogsToFile();
             }
-            else
-            {
-                Logs.logs.Add(new Log(duration));
-            }
-            await ExerciseFile.WriteLogsToFile();
-            ButtonManager.duration = null;
         }
     }
 }

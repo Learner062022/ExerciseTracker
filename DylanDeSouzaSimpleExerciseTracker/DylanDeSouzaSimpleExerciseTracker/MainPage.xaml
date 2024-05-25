@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:dylandesouzasimpleexercisetracker="clr-namespace:DylanDeSouzaSimpleExerciseTracker"
+             x:DataType="dylandesouzasimpleexercisetracker:MainPageViewModel"
              x:Class="DylanDeSouzaSimpleExerciseTracker.MainPage"
              BackgroundColor="{AppThemeBinding Dark={StaticResource darkTheme}, Light={StaticResource lightTheme}}">
     <Grid>
@@ -10,24 +12,26 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <StackLayout>
-                <Label Text="Enter duration exercise (mins)"/>
-                <Entry x:Name="durationEntry"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Minutes Exercised"/>
+                    <Label Text="{Binding MinutesExercised}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Average Minutes Exercised Daily"/>
+                    <Label Text="{Binding DailyAverage}" TextColor="{Binding SetTextColour}"/>
+                </StackLayout>
                 <Button Text="Log" Clicked="ButtonClicked"/>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Average time exercised daily (mins)"/>
-                    <Label x:Name="averageTimeExercisedDaily"/>
+                    <Label Text="Hours Exercised"/>
+                    <Label Text="{Binding HoursExercised}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Hourse expected"/>
-                    <Label x:Name="hoursExpected"/>
+                    <Label Text="Hours expected"/>
+                    <Label Text="{Binding HoursExpected}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Hours exercised"/>
-                    <Label x:Name="hoursExercised"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Annual daily exercise goal (mins)"/>
-                    <Label x:Name="AnnualDailyExerciseGoal"/>
+                    <Label Text="Annual Daily Exercise Goal Minutes"/>
+                    <Label Text="{Binding MinutesToReachDailyAverage}"/>
                 </StackLayout>
                 <Button Text="Settings" Clicked="ButtonClicked"/>
             </StackLayout>
@@ -87,5 +91,4 @@
             </Grid>
         </Grid>
     </Grid>
-
 </ContentPage>

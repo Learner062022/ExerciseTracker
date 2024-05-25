@@ -1,14 +1,17 @@
 ﻿using Newtonsoft.Json;
-using System;
+using PCLStorage;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+using System.ComponentModel;
 
 namespace DylanDeSouzaSimpleExerciseTracker
 {
     public static class Logs
     {
-        public static List<Log> logs;
-        public static string SerializeLogs() => JsonConvert.SerializeObject(logs); 
+        public static List<Log> ExerciseLogs { get; set; }
+
+        public static string SerializeLogs
+        {
+            get => JsonConvert.SerializeObject(ExerciseLogs);
+        }
     }
 }
