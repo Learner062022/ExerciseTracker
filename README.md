@@ -54,7 +54,7 @@ The Exercise Tracker App is designed to encourage users to maintain a healthy li
 
 # License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+[GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.txt)
 
 ## Notice
 
