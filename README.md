@@ -3,6 +3,11 @@
 ## Description
 The Exercise Tracker App is designed to encourage users to maintain a healthy lifestyle by tracking their daily exercise activities. Aiming for a customizable average of exercise per day (default is 30 minutes), the app allows users to log their exercise minutes, calculates their daily average, and provides visual feedback to keep them motivated. With customizable settings and a user-friendly interface, this app is an essential tool for anyone looking to improve their physical activity levels.
 
+## Why This Project is Useful
+- Encourages consistent exercise habits
+- Provides visual motivation and goal tracking
+- Customizable to fit individual needs
+
 ## Features
 - **Exercise Logging:** Users can log the minutes they have exercised each day.
 - **Average Daily Exercise Calculation:** The app calculates the average time spent on exercise daily and provides a year-to-date overview.
