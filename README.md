@@ -52,10 +52,6 @@ The Exercise Tracker App is designed to encourage users to maintain a healthy li
     ```
 5. **Create a new pull request.**
 
-# License
-
-[GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.txt)
-
 ## Notice
 
 This repository can be forked and modified, but cannot be claimed as your own. Credit the original creator when sharing or distributing modified versions.
