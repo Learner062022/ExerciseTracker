@@ -6,7 +6,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
 {
     public static class ThemeManager
     {
-        private static readonly Dictionary<AppTheme, Dictionary<string, Color>> themeColors = new Dictionary<AppTheme, Dictionary<string, Color>>
+        static readonly Dictionary<AppTheme, Dictionary<string, Color>> themeColors = new Dictionary<AppTheme, Dictionary<string, Color>>
         {
             { AppTheme.Dark, new Dictionary<string, Color> { ["TextColor"] = Color.White, ["BackgroundColor"] = Color.Black, ["TitleColor"] = Color.White } },
             { AppTheme.Light, new Dictionary<string, Color> { ["TextColor"] = Color.Black, ["BackgroundColor"] = Color.White, ["TitleColor"] = Color.Black } }
@@ -25,7 +25,7 @@ namespace DylanDeSouzaSimpleExerciseTracker
             UpdatePagesBackgroundColor();
         }
 
-        private static void UpdatePagesBackgroundColor()
+        static void UpdatePagesBackgroundColor()
         {
             if (Application.Current.MainPage is NavigationPage navigationPage)
             {
